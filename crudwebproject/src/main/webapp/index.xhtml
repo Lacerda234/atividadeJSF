@@ -1,10 +1,54 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      template="template.xhtml">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"    
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        
+    </h:head>
+    
+    <ui:decorate template="template.xhtml"/>
+
+    
+    <h:body>
+        
       
-</ui:decorate>
+        <h:form>
+           
+            
+            <p:fieldset style="margin-top: 100px" legend="Pessoas">
+
+                <p:dataTable value="#{pessoaBean.pessoas}" var="pessoa">
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{pessoa.nome}"/>
+                    </p:column>
+                         <p:column headerText="CPF">
+                        <h:outputText  value="#{pessoa.cpf}"/>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <p:commandLink action="#{pessoaBean.dadosEdicao(pessoa)}" value="Editar" style="margin: 3px">
+                             <f:setPropertyActionListener target = "#{pessoaBean.nome}"  
+                                                          value = "#{pessoa.nome}" />
+                             <f:setPropertyActionListener target = "#{pessoaBean.cpf}"  
+                                                          value = "#{pessoa.cpf}" />
+                        </p:commandLink>
+                        
+                        <p:commandLink action="#{pessoaBean.deletar(pessoa)}" value="Excluir" style="margin: 3px"/>
+                    </p:column>
+                            
+
+                </p:dataTable>
+        
+            </p:fieldset>
+        </h:form>
+        
+        
+    </h:body>
+    
+    
+      
+</html>
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    <h:head>
+    
+    </h:head>
+    
+        <ui:decorate template="template.xhtml"/>
+        
+    <h:body onload="capturar()">
+        
+        
+        <h:form style="margin-top: 100px">
+            
+            <h2>Editar dados de #{pessoaBean.nome}</h2>
+               <p:panelGrid  columns="2">
+                            <p:outputLabel value="Nome"/>
+                            <p:inputText  value="#{pessoaBean.nome}"/>
+                            <p:outputLabel value="CPF"/>
+                            <p:inputText binding="#{pessoaBean.inputCPF}" value="#{pessoaBean.cpf}"/>
+                </p:panelGrid>
+        
+            <p:commandButton action="#{pessoaBean.editar(pessoaBean.nome,pessoaBean.cpf)}" value="Confirmar" ></p:commandButton>
+       
+       
+          </h:form>
+        
+    </h:body>
+</html>

@@ -6,29 +6,49 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        
+    </h:head>
       
     <ui:decorate template="template.xhtml"/>
      
-    
-    <div class="container-fluid">
+    <h:body onload="clearInput()">
+           <div class="container-fluid">
       <div class="row vertical-center" style="display: flex;
 
    min-height: 100vh; justify-content: center;margin-top: 100px">
-          <form class="w-50  col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
+          <h:form  class="w-50  col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
             <h1>Cadastro</h1>
             <p>
               <label class="sr-only" for="">Nome</label>
-              <input class="form-control" type="text" placeholder="Nome" required="true"/>
+              <p:inputText class="form-control" value="#{pessoaBean.nome}" type="text" placeholder="Nome" required="true"/>
             </p>
             <p>
               <label class="sr-only" for="">CPF</label>
-              <input class="form-control" type="text" placeholder="CPF" required="true"/>
+              <p:inputText class="form-control" value="#{pessoaBean.cpf}" type="text" placeholder="CPF" required="true"/>
             </p>
-            <button class="btn btn-primary btn-block" type="sumbit">Cadastrar</button>
-          </form>
+            <p:commandButton update="@form" value="Cadastrar" action="#{pessoaBean.adicionar()}" class="btn btn-primary btn-block"></p:commandButton>
+            <!--<button class="btn btn-primary btn-block" type="sumbit">Cadastrar</button>-->
+          </h:form>
       </div>
-    </div>
+           </div>
+        
+        
+        <script>
+            function clearInput(){
+                document.querySelectorAll(".form-control").forEach(input=>{
+                    input.value=""
+                })
+            }
+        </script>
+    </h:body>
+    
+ 
+        
+     
+    
      
  
  
