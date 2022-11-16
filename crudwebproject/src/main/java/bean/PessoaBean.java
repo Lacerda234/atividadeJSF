@@ -6,6 +6,7 @@ package bean;
  */
 
 
+import com.mycompany.crudwebproject.Dependente;
 import com.mycompany.crudwebproject.Pessoa;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,31 +22,20 @@ import javax.faces.component.html.HtmlInputText;
 @ManagedBean
 @javax.faces.bean.SessionScoped
 public class PessoaBean {
-    
-    private HtmlInputText inputNome;
-    private HtmlInputText inputCPF;
-    
+     
     Pessoa pessoaParaEditar;
-    
-    public HtmlInputText getInputNome() {
-        return inputNome;
-    }
-
-    public void setInputNome(HtmlInputText inputNome) {
-        this.inputNome = inputNome;
-    }
-
-    public HtmlInputText getInputCPF() {
-        return inputCPF;
-    }
-
-    public void setInputCPF(HtmlInputText inputCPF) {
-        this.inputCPF = inputCPF;
-    }
-    
      
     String nome;
     String cpf;
+    Dependente dependente;
+
+    public Dependente getDependente() {
+        return dependente;
+    }
+
+    public void setDependente(Dependente dependente) {
+        this.dependente = dependente;
+    }
     Pessoa pessoa = new Pessoa();
     private List<Pessoa> pessoas = new ArrayList<>();
     
@@ -56,20 +46,25 @@ public class PessoaBean {
      
          pessoa.setNome(nome);
          pessoa.setCpf(cpf);
+         pessoa.setDependente(dependente);
          pessoas.add(pessoa);
          pessoa = new Pessoa();
          System.out.println("Cadastro realizado!");
+       //   System.out.println("Dependente:"+dependente.getNome());
          return "index?faces-redirect=true";
     
     }
     
     public String editar(String nome, String cpf){
          System.out.println("Edição realizada!");
-
+          //System.out.println(dep);
          for(int k = 0; k<pessoas.size(); k++){
              if(pessoas.get(k).getNome().equals(pessoaParaEditar.getNome())){
                  pessoas.get(k).setNome(nome);
                   pessoas.get(k).setCpf(cpf);
+                 // pessoas.get(k).setDependente(dep);
+                 pessoas.get(k).setDependente(dependente);
+                  //  System.out.println(pessoas.get(k).getDependente().getNome());
              }
          }
    

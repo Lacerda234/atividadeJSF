@@ -4,12 +4,47 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>Lista de dependentes</div>
-    </body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"    
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+    
+    </h:head>
+    
+          <ui:decorate template="template.xhtml"/>
+    <h:body>
+   
+         <h:form>
+           
+            
+            <p:fieldset style="margin-top: 100px" legend="Dependentes">
+
+                <p:dataTable value="#{dependenteBean.dependentes}" var="dependente">
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{dependente.nome}"/>
+                    </p:column>
+                    <p:column headerText="Data de Nascimento">
+                        <h:outputText  value="#{dependente.dataDeNascimento}">
+                                 <f:convertDateTime  pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+<!--                    <p:column headerText="Ações">
+                        <p:commandLink class="btn btn-primary" action="#{pessoaBean.dadosEdicao(pessoa)}" value="Editar" style="margin: 3px;color:white;">
+                             <f:setPropertyActionListener target = "#{pessoaBean.nome}"  
+                                                          value = "#{pessoa.nome}" />
+                             <f:setPropertyActionListener target = "#{pessoaBean.cpf}"  
+                                                          value = "#{pessoa.cpf}" />
+                        </p:commandLink>
+                        
+                        <p:commandLink class="btn btn-primary" action="#{pessoaBean.deletar(pessoa)}" value="Excluir" style="margin: 3px;color:white;"/>
+                    </p:column>-->
+                            
+
+                </p:dataTable>
+        
+            </p:fieldset>
+        </h:form>
+    </h:body>
 </html>

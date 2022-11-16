@@ -7,7 +7,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         
     </h:head>
@@ -29,7 +30,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
               <label class="sr-only" for="">CPF</label>
               <p:inputText class="form-control" value="#{pessoaBean.cpf}" type="text" placeholder="CPF" required="true"/>
             </p>
-            <p:commandButton update="@form" value="Cadastrar" action="#{pessoaBean.adicionar()}" class="btn btn-primary btn-block"></p:commandButton>
+              <div class="ui-fluid formgrid grid">
+            <div class="field col-12 md:col-4">
+                <p:outputLabel for="@next" value="Escolher Dependente:"/>
+                <p:selectOneMenu  id="option" value="teste" >
+                    <f:selectItems value="#{dependenteBean.dependentes}" var="dependente" itemValue="#{dependente}" itemLabel="#{dependente.nome}"/>
+<!--                    <f:selectItem itemLabel="Option1" itemValue="Option1"/>
+                    <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                    <f:selectItem itemLabel="Option3" itemValue="Option3"/>-->
+                </p:selectOneMenu>
+            </div>
+            </div>
+            <p:commandButton value="Cadastrar" action="#{pessoaBean.adicionar()}" class="btn btn-primary btn-block"></p:commandButton>
             <!--<button class="btn btn-primary btn-block" type="sumbit">Cadastrar</button>-->
           </h:form>
       </div>

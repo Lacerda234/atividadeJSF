@@ -25,18 +25,21 @@
                     <p:column headerText="Nome">
                         <h:outputText value="#{pessoa.nome}"/>
                     </p:column>
-                         <p:column headerText="CPF">
+                    <p:column headerText="CPF">
                         <h:outputText  value="#{pessoa.cpf}"/>
                     </p:column>
                     <p:column headerText="Ações">
-                        <p:commandLink action="#{pessoaBean.dadosEdicao(pessoa)}" value="Editar" style="margin: 3px">
+                        <p:commandLink class="btn btn-primary" action="#{pessoaBean.dadosEdicao(pessoa)}" value="Editar" style="margin: 3px;color:white;text-decoration: none">
                              <f:setPropertyActionListener target = "#{pessoaBean.nome}"  
                                                           value = "#{pessoa.nome}" />
                              <f:setPropertyActionListener target = "#{pessoaBean.cpf}"  
                                                           value = "#{pessoa.cpf}" />
                         </p:commandLink>
                         
-                        <p:commandLink action="#{pessoaBean.deletar(pessoa)}" value="Excluir" style="margin: 3px"/>
+                        <p:commandLink class="btn btn-primary" action="#{pessoaBean.deletar(pessoa)}" value="Excluir" style="margin: 3px;color:white;text-decoration: none"/>
+                    </p:column>
+                     <p:column headerText="Dependente">
+                         <h:outputText  value="#{pessoa.dependente}"/>
                     </p:column>
                             
 

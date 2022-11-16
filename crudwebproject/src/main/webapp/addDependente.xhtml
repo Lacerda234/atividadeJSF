@@ -6,30 +6,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     
     <ui:decorate template="template.xhtml"/>
     
-    <h1>ADicionar dependente</h1>
-      <div class="d-flex justify-content-center  mt-3">
-         <form class="w-50 row gy-2 gx-3 align-items-center d-flex p-2">
-             <div class="col-auto">
-                <label for="autoSizingInput">Escolher Pessoa:</label>
-                 <input type="text" class="form-control" id="autoSizingInput" placeholder="CPF da pessoa"/>
-             </div>
-            <div class="col-auto">
-                <label for="autoSizingSelect">Escolher Dependente:</label>
-                <select class="form-select" id="autoSizingSelect">
-                <option value="1">Fulano</option>
-                <option value="2">Cicrano</option>
-                <option value="3">Beltrano</option>
-                </select>
-            </div>
-    <br/>
-            <div >
-                <button type="submit" class="btn btn-primary">Confirmar</button>
-            </div>
-        </form>
-    </div>
+    <h:body onload="clearInput()">
+      <div class="container-fluid">
+      <div class="row vertical-center" style="display: flex;
+
+   min-height: 100vh; justify-content: center;margin-top: 100px">
+          <h:form  class="w-50  col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5">
+            <h1>Cadastrar Dependente</h1>
+            <p>
+              <label class="sr-only" for="">Nome</label>
+              <p:inputText class="form-control" value="#{dependenteBean.nome}" type="text" placeholder="Nome" required="true"/>
+            </p>
+            <p>
+              <label class="sr-only" for="">Data de Nascimento</label>
+              <p:inputMask mask="99/99/9999" class="form-control" value="#{dependenteBean.dataDeNascimento}" placeholder="Data de nascimento" required="true">
+                 <f:convertDateTime  pattern="dd/MM/yyyy" />
+<!--                  <f:converter converterId="localDateFacesConverter"/>-->
+              </p:inputMask>   
+            </p>
+
+          
+            <p:commandButton value="Cadastrar" action="#{dependenteBean.adicionar()}" class="btn btn-primary btn-block"></p:commandButton>
+          </h:form>
+      </div>
+         </div>
+        
+            <script>
+            function clearInput(){
+                document.querySelectorAll(".form-control").forEach(input=>{
+                    input.value=""
+                })
+            }
+        </script>
+    </h:body>
 </html>

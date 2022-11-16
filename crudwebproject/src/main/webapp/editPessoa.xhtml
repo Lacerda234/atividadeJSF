@@ -19,18 +19,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <h:body onload="capturar()">
         
         
-        <h:form style="margin-top: 100px">
+        <h:form style="margin-top: 100px;margin-left: 30px">
             
-            <h2>Editar dados de #{pessoaBean.nome}</h2>
+            <h2>Editar dados de: #{pessoaBean.nome}</h2>
                <p:panelGrid  columns="2">
                             <p:outputLabel value="Nome"/>
                             <p:inputText  value="#{pessoaBean.nome}"/>
                             <p:outputLabel value="CPF"/>
-                            <p:inputText binding="#{pessoaBean.inputCPF}" value="#{pessoaBean.cpf}"/>
+                            <p:inputText value="#{pessoaBean.cpf}"/>
+          
+               <p:outputLabel for="@next" value="Dependente:"/>
+           
+                
+               <p:selectOneMenu  id="option" value="teste">
+                    <f:selectItems var="dependente" itemLabel="#{dependente.nome}" value="#{dependenteBean.dependentes}"/>
+<!--                   <f:selectItem value="#{dependente}" />-->
+<!--                    <f:selectItem itemLabel="dependente.nome" itemValue="Option1"/>-->
+<!--                    <f:selectItem itemLabel="Option2" itemValue="Option2"/>
+                    <f:selectItem itemLabel="Option3" itemValue="Option3"/>-->
+                 
+                </p:selectOneMenu>
+               <p:commandButton action="#{pessoaBean.editar(pessoaBean.nome,pessoaBean.cpf)}" value="Confirmar" ></p:commandButton>
+
+           
+             
                 </p:panelGrid>
         
-            <p:commandButton action="#{pessoaBean.editar(pessoaBean.nome,pessoaBean.cpf)}" value="Confirmar" ></p:commandButton>
-       
+                  
        
           </h:form>
         
