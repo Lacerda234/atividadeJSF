@@ -24,11 +24,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h1>Cadastro</h1>
             <p>
               <label class="sr-only" for="">Nome</label>
-              <p:inputText class="form-control" value="#{pessoaBean.nome}" type="text" placeholder="Nome" required="true"/>
+              <p:inputText class="form-control" requiredMessage="Campo obrigatório" value="#{pessoaBean.nome}" type="text" placeholder="Nome" required="true"/>
             </p>
             <p>
               <label class="sr-only" for="">CPF</label>
-              <p:inputText class="form-control" value="#{pessoaBean.cpf}" type="text" placeholder="CPF" required="true"/>
+              <p:inputText class="form-control" requiredMessage="Campo obrigatório" value="#{pessoaBean.cpf}" type="text" placeholder="CPF" required="true"/>
             </p>
               <div class="ui-fluid formgrid grid">
             <div class="field col-12 md:col-4">

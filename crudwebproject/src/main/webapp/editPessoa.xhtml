@@ -24,9 +24,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             <h2>Editar dados de: #{pessoaBean.nome}</h2>
                <p:panelGrid  columns="2">
                             <p:outputLabel value="Nome"/>
-                            <p:inputText  value="#{pessoaBean.nome}"/>
+                            <p:inputText  requiredMessage="Campo obrigatório" required="true" value="#{pessoaBean.nome}"/>
                             <p:outputLabel value="CPF"/>
-                            <p:inputText value="#{pessoaBean.cpf}"/>
+                            <p:inputText requiredMessage="Campo obrigatório" required="true" value="#{pessoaBean.cpf}"/>
           
                <p:outputLabel for="@next" value="Dependente:"/>
            
